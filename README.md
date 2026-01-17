@@ -1,38 +1,43 @@
-🤖 OmniBot Backend – Multi-Tenant AI Chatbot API
+# 🤖 OmniBot Backend – Multi-Tenant AI Chatbot API
 
-OmniBot Backend is a scalable, multi-tenant AI chatbot API designed to power plug-and-play chat widgets for any business.
-It supports tenant isolation, Retrieval-Augmented Generation (RAG), conversation memory, and LLM provider decoupling.
+OmniBot Backend is a **scalable, multi-tenant AI chatbot API** designed to power **plug-and-play chat widgets** for any business.
 
-This backend is framework-agnostic from the frontend perspective and can be integrated with any website or application.
+It supports **strict tenant isolation**, **Retrieval-Augmented Generation (RAG)**, **conversation memory**, and **LLM provider decoupling**.
 
-🚀 Features
+This backend is **framework-agnostic from the frontend perspective** and can be integrated with any website or application.
 
-✅ Multi-tenant architecture (strict data isolation)
+---
 
-✅ Secure AI orchestration layer
+## 🚀 Features
 
-✅ RAG-based responses (company data only)
+- ✅ Multi-tenant architecture (strict data isolation)
+- ✅ Secure AI orchestration layer
+- ✅ RAG-based responses (company data only)
+- ✅ Optional general-purpose AI mode
+- ✅ Conversation memory support
+- ✅ MongoDB-based persistence
+- ✅ LLM provider agnostic (OpenRouter, Gemini, etc.)
+- ✅ SaaS-ready and scalable
 
-✅ Optional general-purpose AI mode
+---
 
-✅ Conversation memory support
+## 🧱 Tech Stack
 
-✅ MongoDB-based persistence
+| Layer            | Technology              |
+|------------------|-------------------------|
+| Runtime          | Node.js                 |
+| API Framework    | Express.js              |
+| Database         | MongoDB (Mongoose)      |
+| AI Provider      | OpenRouter (LLMs via API) |
+| Language         | TypeScript              |
+| Authentication  | API Key (tenant-based)  |
+| Architecture    | Clean, decoupled services |
 
-✅ LLM provider agnostic (OpenRouter, Gemini, etc.)
+---
 
-✅ Ready for SaaS scaling
+## 📁 Project Structure
 
-🧱 Tech Stack
-Layer	Technology
-Runtime	Node.js
-API Framework	Express.js
-Database	MongoDB (Mongoose)
-AI Provider	OpenRouter (LLMs via API)
-Language	TypeScript
-Auth	API key (tenant-based)
-Architecture	Clean, decoupled services
-📁 Project Structure
+```txt
 src/
 ├── index.ts                 # App entry point
 ├── routes/
@@ -50,30 +55,30 @@ src/
 └── config/
     └── db.ts                # MongoDB connection
 
-🔐 Environment Variables
 
-Create a .env file in the backend root:
+## 🔐 Environment Variables
 
+Create a `.env` file in the backend root:
+
+```env
 PORT=4000
 OPENROUTER_API_KEY=your_openrouter_api_key
 MONGODB_URI=mongodb://localhost:27017/admin
 
+
 🔌 MongoDB Setup
-
-Database:
-
+Database
 admin
 
-
-Collections:
+Collections
 
 Tenant
+
 Document
+
 Conversation (optional)
 
-
-Example Tenant document:
-
+Example Tenant Document
 {
   "_id": "tenant_tutoronline",
   "name": "TutorOnline",
@@ -81,9 +86,7 @@ Example Tenant document:
   "status": "active"
 }
 
-
-Example Document:
-
+Example Document
 {
   "_id": "doc_001",
   "tenantId": "tenant_tutoronline",
@@ -125,10 +128,10 @@ Create a new tenant
 📚 Knowledge Base API
 
 GET /api/tenants/:tenantId/documents
-Fetch documents for tenant
+Fetch documents for a tenant
 
 POST /api/documents
-Add document
+Add a document
 
 {
   "tenantId": "tenant_tutoronline",
@@ -139,7 +142,7 @@ Add document
 
 🧠 AI Orchestration Logic
 
-The AI pipeline works as follows:
+The AI pipeline follows this flow:
 
 Validate tenant
 
@@ -177,61 +180,3 @@ User Message
 🔐 LLM access only via backend
 
 🔐 Safe fallback responses
-
-🧪 Data Isolation Test (Critical)
-
-Tenant A asks:
-
-“What is the price of the Private Pool Villa?”
-
-Expected response:
-
-I’m sorry, I don’t have information on that.
-
-
-✔ Confirms multi-tenant isolation
-
-🧩 LLM Provider Decoupling
-
-The backend can switch models without changing business logic.
-
-Supported:
-
-OpenRouter (LLaMA, Mistral, GPT, etc.)
-
-Gemini
-
-Local / self-hosted models (future)
-
-📈 Scalability Roadmap
-
-Redis-based conversation cache
-
-Vector DB (Pinecone / Qdrant)
-
-Streaming responses
-
-Role-based admin access
-
-Usage-based billing
-
-Webhook notifications
-
-🧑‍💻 Local Development
-npm install
-npm run dev
-
-
-Server starts at:
-
-http://localhost:4000
-
-📄 License
-
-MIT License
-Free to use, modify, and commercialize.
-
-✨ Final Note
-
-This backend is not a demo.
-It is designed as a real SaaS-ready AI chatbot platform that can be used by any business in minutes.
