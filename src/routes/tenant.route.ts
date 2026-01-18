@@ -33,5 +33,3 @@ router.post('/', async (req, res) => {
 
 export default router;
 
-// aibot key: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 
-// hmm key :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
