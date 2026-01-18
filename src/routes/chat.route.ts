@@ -6,6 +6,7 @@ const router = Router();
 router.post('/message', async (req, res) => {
   const { companyId, message, history } = req.body;
 
+  // Company ChatBot
   if (!companyId || !message) {
     return res.status(400).json({ error: 'Invalid request' });
   }
@@ -17,6 +18,16 @@ router.post('/message', async (req, res) => {
     console.error(e);
     res.status(500).json({ reply: 'Server error' });
   }
+
+  // General Purpose ChatBot 
+  //   try {
+  //   const reply = await chat( message, history || []);
+  //   res.json({ reply });
+  // } catch (e) {
+  //   console.error(e);
+  //   res.status(500).json({ reply: 'Server error' });
+  // }
+
 });
 
 export default router;
